@@ -145,7 +145,7 @@ userRouter.put(
         userId,
         {
           $set: {
-            image: imageUrl.replace(/\\/g, "/"),
+            image: imageUrl,
             name: newadminname,
             phone: newphone,
             bio: newbio,

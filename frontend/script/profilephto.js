@@ -17,7 +17,8 @@ fetch(`${baseURL}users/profile`, {
     if (!admin.image) {
       imagephoto.src = "../images/default.jpg";
     } else {
-      imagephoto.src = `../${admin.image}`;
+      imagephoto.src = `${baseURL}${admin.image}`;
+      console.log(admin)
     }
 
     const adminname = document.createElement("h4");
@@ -37,7 +38,7 @@ fetch(`${baseURL}users/profile`, {
     if (!admin.image) {
       imagephoto1.src = "../images/default.jpg";
     } else {
-      imagephoto1.src = `../${admin.image}`;
+      imagephoto.src = `${baseURL}${admin.image}`;
     }
     profilePhoto1.innerHTML = ""; // Clear the existing content
     profilePhoto1.append(imagephoto1);

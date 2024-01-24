@@ -55,7 +55,7 @@ function displayAdmin(data) {
         userImage.src ="../images/default.jpg";
       }else{
         console.log(userImage.src)
-        userImage.src = `${baseURL}${admin.image}`
+        userImage.src = admin.image
         
       }
       
