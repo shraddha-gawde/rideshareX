@@ -124,7 +124,7 @@ const upload = multer({ storage: storage });
  *                   type: string
  *                   description: Error message
  */
-userRouter.patch('/profile1', upload.single('profileImage'), async (req, res) => {
+userRouter.put('/profile1', upload.single('profileImage'), async (req, res) => {
   try {
     const userId = req.user.userId;
     const { name, phone, birthday, designation, bio, website } = req.body;
