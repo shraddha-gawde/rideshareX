@@ -235,39 +235,39 @@ button:hover {
                 </div> -->
 
                 <div class="container">
-                  <h2>User Profile Update</h2>
-            
-                  <form id="uploadForm" enctype="multipart/form-data">
-                    <label for="profileImage">Profile Image:</label>
-                    <input type="file" name="profileImage" id="profileImage" accept="image/*">
-            
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Name">
-            
-                    <label for="phone">Phone Number:</label>
-                    <input type="text" name="phone" id="phone" placeholder="Phone Number">
-            
-                    <label for="birthday">Date of Birth:</label>
-                    <input type="date" name="birthday" id="birthday" placeholder="Date of Birth">
-            
-                    <label for="designation">Designation:</label>
-                    <input type="text" name="designation" id="designation" placeholder="Designation">
-            
-                    <label for="bio">Bio:</label>
-                    <textarea name="bio" id="bio" placeholder="Bio"></textarea>
-            
-                    <label for="website">Website:</label>
-                    <input type="text" name="website" id="website" placeholder="Website">
-            
-                    <button type="button" onclick="uploadFile()">Update Profile</button>
-                  </form>
-            
-                  <img id="uploadedImage" src="" alt="Uploaded Image">
-                </div>
+      <h2>User Profile Update</h2>
+
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label for="profileImage">Profile Image:</label>
+        <input type="file" name="profileImage" id="profileImage" accept="image/*">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Name">
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="phone" id="phone" placeholder="Phone Number">
+
+        <label for="birthday">Date of Birth:</label>
+        <input type="date" name="birthday" id="birthday" placeholder="Date of Birth">
+
+        <label for="designation">Designation:</label>
+        <input type="text" name="designation" id="designation" placeholder="Designation">
+
+        <label for="bio">Bio:</label>
+        <textarea name="bio" id="bio" placeholder="Bio"></textarea>
+
+        <label for="website">Website:</label>
+        <input type="text" name="website" id="website" placeholder="Website">
+
+        <button type="button" onclick="uploadFile()">Update Profile</button>
+      </form>
+
+      <img id="uploadedImage" src="" alt="Uploaded Image">
+    </div>
             
       </main>
     </div>
-    <script>
+    <!-- <script>
       const baseURL = `https://ridesharex.onrender.com/`
       async function uploadFile() {
         const profileImageInput = document.getElementById('profileImage');
@@ -285,6 +285,46 @@ button:hover {
         try {
           const response = await fetch("https://ridesharex.onrender.com/users/profile1", {
             method: 'put',
+            body: formData,
+            headers: {
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            const imageUrl = result.image;
+
+            // Display the uploaded image
+            uploadedImage.src = imageUrl;
+          } else {
+            console.error('Profile update failed');
+          }
+        } catch (error) {
+          console.error('Error updating profile:', error);
+        }
+      }
+    </script> -->
+
+    
+<script>
+  const baseURL = `https://ridesharex.onrender.com/`
+      async function uploadFile() {
+        const profileImageInput = document.getElementById('profileImage');
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
+        const birthdayInput = document.getElementById('birthday');
+        const designationInput = document.getElementById('designation');
+        const bioInput = document.getElementById('bio');
+        const websiteInput = document.getElementById('website');
+        const uploadForm = document.getElementById('uploadForm');
+        const uploadedImage = document.getElementById('uploadedImage');
+
+        const formData = new FormData(uploadForm);
+
+        try {
+          const response = await fetch("https://ridesharex.onrender.com/users/profile1", {
+            method: 'PATCH',
             body: formData,
             headers: {
               "Authorization": `Bearer ${localStorage.getItem("token")}`,
