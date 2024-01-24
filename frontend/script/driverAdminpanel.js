@@ -1,4 +1,4 @@
-const baseURL = `https://tech-sankat-nivaaran-4321.onrender.com/`
+const baseURL = `https://ridesharex.onrender.com/`
 
 
 
