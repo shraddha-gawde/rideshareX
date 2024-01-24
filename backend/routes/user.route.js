@@ -124,33 +124,52 @@ const upload = multer({ storage: storage });
  *                   type: string
  *                   description: Error message
  */
-userRouter.put('/profile1', upload.single('profileImage'), async (req, res) => {
-  try {
-    const updatedUser = await UserModel.findByIdAndUpdate(
-      userId,
-      {
-        $set: {
-          image: imageUrl.replace(/\\/g, "/"),
-          name: newadminname,
-          phone: newPhone,
-          bio: newBio,
-          birthday: newdateofBirth,
-          designation: newDesignation,
+userRouter.put(
+  "/profile1",
+  authenticateToken,
+  upload.single("profileImage"),
+  async (req, res) => {
+    try {
+      const userId = req.user.userId;
+      const {
+        newadminname,
+        newBio,
+        newPhone,
+        newDesignation,
+        newdateofBirth,
+      } = req.body;
+
+      const imageUrl = req.file ? req.file.path : null;
+
+      const updatedUser = await UserModel.findByIdAndUpdate(
+        userId,
+        {
+          $set: {
+            image: imageUrl.replace(/\\/g, "/"),
+            name: newadminname,
+            phone: newPhone,
+            bio: newBio,
+            birthday: newdateofBirth,
+            designation: newDesignation,
+          },
         },
-      },
-      { new: true }
-    );
-  
-    if (!updatedUser) {
-      return res.status(404).json({ error: "User not found" });
+        { new: true }
+      );
+
+      if (!updatedUser) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: "Internal Server Error", details: error.message });
     }
-  
-    res.status(200).json(updatedUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error", details: error.message });
   }
-});
+);
+
 // userRouter.put(
 //   "/profile1",
 //   authenticateToken,
