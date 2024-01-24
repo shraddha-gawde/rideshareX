@@ -7,15 +7,18 @@ function setActiveLink(link) {
     // Add the 'active' class to the clicked nav-link
     link.classList.add('active');
 }
-
+function goProfile() {
+    window.location.href = "../view/adminprofile.html";
+}
 function goToProfile() {
     window.location.href = "../view/profile.html";
 }
 
+
 function logout() {
     const accessToken = localStorage.getItem("token");
 
-    fetch(`https://wild-jade-fish-cap.cyclic.app/users/logout`, {
+    fetch(`https://tech-sankat-nivaaran-4321.onrender.com/users/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

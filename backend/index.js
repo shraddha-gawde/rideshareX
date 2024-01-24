@@ -15,7 +15,7 @@ const swaggerUi = require("swagger-ui-express");
 
 const app = express();
 // multer
-app.use('frontend/view/uploads/', express.static(path.join(__dirname, 'uploads')));
+app.use('frontend/uploads/', express.static(path.join(__dirname, 'uploads')));
 
 
 
@@ -37,7 +37,7 @@ const options = {
         url: "http://localhost:8080",
       },
       {
-        url: "https://wild-jade-fish-cap.cyclic.app",
+        url: "https://tech-sankat-nivaaran-4321.onrender.com",
       },
     ],
   },

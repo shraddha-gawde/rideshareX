@@ -1,4 +1,4 @@
-// const baseURL = `http://localhost:8080/`;
+// const baseURL = `https://tech-sankat-nivaaran-4321.onrender.com/`;
 
 fetch(`${baseURL}users/profile`, {
   method: "GET",
@@ -17,7 +17,7 @@ fetch(`${baseURL}users/profile`, {
     if (!admin.image) {
       imagephoto.src = "../images/default.jpg";
     } else {
-      imagephoto.src = `../${admin.image}`;
+      imagephoto.src = `${baseURL}${admin.image}`;
     }
 
     const adminname = document.createElement("h4");
@@ -37,7 +37,7 @@ fetch(`${baseURL}users/profile`, {
     if (!admin.image) {
       imagephoto1.src = "../images/default.jpg";
     } else {
-      imagephoto1.src = `../${admin.image}`;
+      imagephoto1.src = `${baseURL}${admin.image}`;
     }
     profilePhoto1.innerHTML = ""; // Clear the existing content
     profilePhoto1.append(imagephoto1);

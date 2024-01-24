@@ -18,7 +18,7 @@ register_btn.addEventListener("click", registerUser);
 login_btn.addEventListener("click", loginUser);
 
 // BaseURL
-const baseURL = "https://wild-jade-fish-cap.cyclic.app";
+const baseURL = "https://tech-sankat-nivaaran-4321.onrender.com";
 
 // handling registration
 async function registerUser() {

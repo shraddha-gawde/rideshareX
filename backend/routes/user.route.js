@@ -124,7 +124,7 @@ const upload = multer({ storage: storage });
  *                   type: string
  *                   description: Error message
  */
-userRouter.patch(
+userRouter.put(
   "/profile1",
   authenticateToken,
   upload.single("profileImage"),
@@ -163,7 +163,9 @@ userRouter.patch(
       res.status(200).json(updatedUser);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      res
+        .status(500)
+        .json({ error: "Internal Server Error", details: error.message });
     }
   }
 );
